@@ -1,11 +1,15 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Dashboard from '../components/Dashboard'
 
-const Dashboard = () => {
+
+const DashboardPage = () => {
   return (
-    <div>
-      dashboard page is building
+    <div className='w-full grid gap-1'>
+      <Navbar/>
+      <Dashboard/>
     </div>
   )
 }
 
-export default Dashboard
+export default DashboardPage

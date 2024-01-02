@@ -2,9 +2,11 @@ import React from "react";
 import lightIcon from "../assets/lightIcon.png";
 import main from "../assets/main.png";
 import Vector from "../assets/Vector.png";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
+  const navigate = useNavigate()
   return (
     <>
       <nav className="flex justify-between p-10 items-center">
@@ -53,14 +55,14 @@ const Login = () => {
             <div class="flex justify-center">
               <div class="w-full bg-[#2F2F2F] rounded-2xl shadow-lg shadow-[#2F2F2F] border border-[#2F2F2F] md:mt-0 sm:max-w-md xl:p-0 dark:bg-[#2F2F2F] ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                  <form class="space-y-4 md:space-y-6" action="#">
+                  <div class="space-y-4 md:space-y-6" action="#">
                     <div className="flex flex-col gap-5 mb-3">
                       <div>
                         <input
                           type="email"
                           name="email"
                           id="email"
-                          class="bg-gray-50 border border-[#2F2F2F] shadow-[#2F2F2F] shadow-lg text-gray-900 sm:text-sm rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-[1.5rem] dark:bg-[#414141] dark:border-[#414144] dark:placeholder-[#666666] "
+                          className="bg-[#414141] border border-[#2F2F2F] shadow-[#2F2F2F] shadow-lg text-black sm:text-sm rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-[1.5rem] dark:bg-[#414141] dark:border-[#414143] dark:placeholder-[#666666] "
                           placeholder="Email"
                           required=""
                         />
@@ -78,7 +80,7 @@ const Login = () => {
                     </div>
 
                     <button
-                      type="submit"
+                    onClick={()=>navigate("/admin")}
                       class="w-full  text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm  py-[1.3rem]  text-center  dark:hover:bg-[#020403] "
                     >
                       Login
@@ -88,7 +90,7 @@ const Login = () => {
                       By continuing. you agree to (name)’s Terms of service and
                       Privacy policy
                     </p>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
