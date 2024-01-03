@@ -145,15 +145,18 @@ const Navbar = () => {
       <div id="targetEl" className={`fixed mt-[5rem] duration-700 ${sideBar ?'translate-x-0':'-translate-x-[100%] '}`}>
         <ul class="w-48 rounded-lg  border border-gray-200 bg-white text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white">
           <li class="w-full rounded-t-lg border-b border-gray-200 px-4 py-2 dark:border-gray-600">
-            Profile
+          Dashboard
           </li>
           <li class="w-full border-b border-gray-200 px-4 py-2 dark:border-gray-600">
-            Settings
+          Sales
           </li>
           <li class="w-full border-b border-gray-200 px-4 py-2 dark:border-gray-600">
-            Messages
+          Payment
           </li>
-          <li class="w-full rounded-b-lg px-4 py-2">Download</li>
+          <li class="w-full border-b border-gray-200 px-4 py-2 dark:border-gray-600">
+          MIS
+          </li>
+          <li class="w-full rounded-b-lg px-4 py-2">Purchase entry</li>
         </ul>
       </div>
       ̦
