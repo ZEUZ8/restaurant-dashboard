@@ -5,5 +5,13 @@
         {"item":"Open item","id":3,"price":29.45,"sold":3},
         {"item":"Biriyani","id":4,"price":29.89,"sold":5},
         {"item":"Mandhi","id":5,"price":29.75,"sold":3}
+    ],
+    "sales":[
+        {"by":"Dingin","id":1,"profit":99,"perc":30},
+        {"by":"Takeaway","id":2,"profit":86,"perc":18},
+        {"by":"Swiggy","id":3,"profit":68,"perc":16},
+        {"by":"zomato","id":4,"profit":55,"perc":14},
+        {"by":"Delivery","id":5,"profit":51,"perc":12},
+        {"by":"Talabat","id":6,"profit":45,"perc":10}
     ]
 }

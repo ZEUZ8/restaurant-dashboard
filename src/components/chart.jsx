@@ -76,27 +76,64 @@ const Chart = () => {
     }
   };
 
-  return (<>
-      <div className="sticky top-0 z-50 ">
-        <div className="h-10 w-full text-center font-bold">
-          {isMonthly ? "Monthly Data" : "Daily Data"}
+  return (
+    <>
+      <div className="sticky top-0 z-50 grid grid-cols-6 gap-4">
+        <div className="h-10 w-full text-end text-xl font-bold p-2 col-span-4">
+          {isMonthly ? "Month wise Comparison" : "Day wise Comparison"}
         </div>
-        <button onClick={handleToggleChart} className="w-full p-2">
-          {isMonthly ? "Switch to Daily" : "Switch to Monthly"}
+        <button
+          onClick={handleToggleChart}
+          className="w-full  col-span-2 flex gap-2  "
+        >
+          <p
+            className={` ${
+              !isMonthly && `bg-white text-black `
+            } font-medium rounded-xl p-2`}
+          >
+            {" "}
+            Daily
+          </p>
+          <p
+            className={`${
+              isMonthly && `bg-white text-black`
+            } font-medium rounded-xl p-2`}
+          >
+            Monthly
+          </p>
         </button>
       </div>
-    <div style={{ width: "600px", height: "400px", overflowX: "auto" }}>
-      <LineChart
-        width={chartData.length * 40 < 600 ? 600 : chartData.length * 40}
-        height={320}
-        data={chartData}
+      <div style={{ width: "600px", height: "400px", overflowX: "auto" }}>
+        <LineChart
+          width={chartData.length * 40 < 600 ? 600 : chartData.length * 40}
+          height={320}
+          data={chartData}
         >
-        <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-        <XAxis dataKey="date" stroke="#fff" tickFormatter={getTickFormat} />
-        <YAxis dataKey="amount" stroke="#fff" domain={[0, 15000]} />
-      </LineChart>
-    </div>
-          </>
+          <defs>
+            <linearGradient id="colorUv" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="25%" stopColor="#05FF00" />
+              <stop offset="50%" stopColor="#DC8D00" />
+              <stop offset="75%" stopColor="#FF7A00" />
+              <stop offset="85%" stopColor="#FF0202" />
+              <stop offset="100%" stopColor="#05FF00" />
+            </linearGradient>
+          </defs>
+          <Line
+            type="monotone"
+            dataKey="amount"
+            stroke="url(#colorUv)" // Apply the gradient to the line
+            strokeWidth={3}
+            dot={false}
+          />
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickFormatter={getTickFormat}
+          />
+          <YAxis dataKey="amount" axisLine={false} domain={[0, 15000]} />
+        </LineChart>
+      </div>
+    </>
   );
 };
 

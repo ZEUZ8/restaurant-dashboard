@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import SaleWithCompare from "./SaleWithCompare";
+import axios from "axios";
 
 const Sales = () => {
+  const [data,setData] = useState([])
+  const [maxPrice, setMaxPrice] = useState(0);
+
+  const fetchData = async()=>{
+      try{
+          const response = await axios.get("http://localhost:3000/sales")
+          const result = response?.data?.sort((a,b)=>b.profit - a.profit)
+          setMaxPrice(result[0].profit);
+          setData(result)
+      }catch(error){
+          console.log(error,' erro in the sale with compare fetching')
+      }
+  }
+
+  useEffect(()=>{
+      fetchData()
+  },[])
   return (
     <>
       <div className="grid gap-8">
@@ -10,98 +29,63 @@ const Sales = () => {
             <p className="text-lg text-[#05FDF1]">
               365.95 <span className="text-xs text-white">AED</span>{" "}
             </p>
-            <p className="text-[.65rem] text-center">
-              8% <span className="text-[0.4rem]">than yesterday</span>
+            <p className="text-[.65rem] text-center text-green-400">
+              8% <span className="text-[0.4rem] ">than yesterday</span>
             </p>
           </div>
 
           <div className="col-span-2 rounded-lg p-4 shadow-special">
-            <p className="text-[8px]">Today Sales</p>
+            <p className="text-[8px]">Top sale time</p>
             <p className="text-lg text-[#FFD400]">
               365.95 <span className="text-xs text-white">AED</span>{" "}
             </p>
             <p className="text-[.65rem] text-center">
-              8% <span className="text-[0.4rem]">Top Sale Time</span>
+              8% <span className="text-[0.4rem]">12 pm - 3 pm</span>
             </p>
           </div>
+
           <div className="col-span-2 rounded-lg p-4 shadow-special">
-            <p className="text-[8px]">Today Sales</p>
+            <p className="text-[8px]">Door Delivery Sales</p>
             <p className="text-lg text-[#FF8006]">
               365.95 <span className="text-xs text-white">AED</span>{" "}
             </p>
             <p className="text-[.65rem] text-center">
-              8% <span className="text-[0.4rem]">Door Delivery Sales</span>
+              8% <span className="text-[0.4rem]">Bills 08</span>
             </p>
           </div>
+
           <div className="col-span-2 rounded-lg p-4 shadow-special">
-            <p className="text-[8px] ">Today Sales</p>
+            <p className="text-[8px] ">Bill & Payss</p>
             <p className="text-lg text-[#FF005A]">11/25</p>
             <p className="text-[.65rem] text-center">
-              8% <span className="text-[0.4rem] ">Bill & Pays</span>
+              8% <span className="text-[0.4rem] "></span>
             </p>
           </div>
+
           <div className="col-span-2 rounded-lg p-4 shadow-special">
-            <p className="text-[8px] ">Today Sales</p>
+            <p className="text-[8px] ">Void</p>
             <p className="text-lg text-[#009FFF]">0/0</p>
             <p className="text-[.65rem] text-center">
-              8% <span className="text-[0.4rem]">Void</span>
+              8% <span className="text-[0.4rem]">Bills/items</span>
             </p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2">
           {/* graph mini start */}
+
           <div className="p-2 grid">
             <div className="text-white shadow-special rounded-2xl p-5">
               <h1 className="font-medium">Sales With Comparison</h1>
               <div className="flex flex-col ps-4">
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div
-                      className={`h-3 mx-5  rounded-xs w-[70%] bg-[#8639BA]`}
-                    />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div className={`h-3 mx-5  w-[60%] bg-[#AE45C6]`} />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div className={`h-3 mx-5  w-[7%] bg-[#E958A1]`} />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div className={`h-3 mx-5  w-[40%] bg-[#E8E465]`} />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div className={`h-3 mx-5  w-[40%] bg-[#F2B45C]`} />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-8 items-center mt-2">
-                  <div className="text-base col-span-1">dining</div>
-                  <div className="col-span-6  flex items-center max-w-full">
-                    <div className={`h-3 mx-5  w-[40%] bg-[#EF7075]`} />
-                    <p className="font-extralight">30%</p>
-                  </div>
-                </div>
+              
+                {data.map((data,i)=>{
+                  return <SaleWithCompare data={data} maxPrice={maxPrice} i={i}/>
+                })}
               </div>
             </div>
           </div>
+
           {/* graph mini start */}
           <div className="p-2 grid gap-4 grid-cols-2">
             {/* start c */}
@@ -109,14 +93,14 @@ const Sales = () => {
               <p className="sm p-2">Total purchase</p>
               <div className="p-2">
                 <p className="text-xs">cash/23</p>
-                <p className="text-lg">
-                  322.61 <span className="text-[.8rem]">AED</span>
+                <p className="text-lg text-[#8639BA]">
+                  322.61 <span className="text-[.8rem] text-white">AED</span>
                 </p>
               </div>
               <div className=" p-2">
                 <p>cash/23</p>
-                <p>
-                  322.61 <span className="text-[.8rem]">AED</span>
+                <p className="text-[#8639BA]">
+                  322.61 <span className="text-[.8rem] text-white">AED</span>
                 </p>
               </div>
             </div>
@@ -126,14 +110,14 @@ const Sales = () => {
               <p className="sm p-2">Total purchase</p>
               <div className="p-2">
                 <p className="text-xs">cash/23</p>
-                <p className="text-lg">
-                  322.61 <span className="text-[.8rem]">AED</span>
+                <p className="text-lg text-[#EF7075]">
+                  322.61 <span className="text-[.8rem] text-white">AED</span>
                 </p>
               </div>
               <div className=" p-2">
                 <p>cash/23</p>
-                <p>
-                  322.61 <span className="text-[.8rem]">AED</span>
+                <p className="text-[#F2B45C]">
+                  322.61 <span className="text-[.8rem] text-white">AED</span>
                 </p>
               </div>
             </div>

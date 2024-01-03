@@ -9,6 +9,7 @@ const Donut = () => {
     "Credit",
     "Cash",
   ]);
+  const colors = ["#23ccd1","#a7236f","#f56c40","#f7dc67"]
 
   useEffect(() => {
     // Chart configuration
@@ -58,10 +59,9 @@ const Donut = () => {
             <h1 className="text-2xl font-medium inline">365.61</h1>{" "}
             <span className="text-̦2xl inline font-normal">AED</span>
           </div>
-          <div className=" gap-4 grid grid-cols-2 text-xs text-start">
-            {labels.map((label) => {
-              console.log(label, " the labels inthe console");
-              return <div key={label}>{label}</div>;
+          <div className=" gap-4 grid grid-cols-2 text-xs text-start ">
+            {labels.map((label,i) => {
+              return <div className="flex items-center " key={label}><div className={`w-3 h-3 rounded border  bg-[${colors[i]}]`}></div> {label}</div>;
             })}
           </div>
         </div>
