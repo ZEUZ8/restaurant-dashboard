@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import leftArrow from "../assets/leftArrow.png";
 import navContent from "../assets/navContent.png";
+import Group from "../assets/Group.png"
+import lightIcon from "../assets/lightIcon.png"
 
 const Navbar = () => {
   const [hover, setHover] = useState("");
@@ -12,10 +14,17 @@ const Navbar = () => {
   return (
     <>
       <nav class=" w-full  top-0 start-0 ">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-10 p-4">
-          <div className="order-3">
+        <div class="max-w-screen-xl flex  items-center justify-between mx-10 p-4">
+
+          <div className="order-3 max-md:hidden">
             <img src={navContent} alt="" />
           </div>
+
+          <div className="order-3 md:hidden flex gap-5 ">
+            <img src={Group} alt="" />
+            <img src={lightIcon} alt="" />
+          </div>
+
           <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"></div>
 
           <div
